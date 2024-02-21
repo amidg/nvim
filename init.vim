@@ -1,8 +1,7 @@
 :set number
 :set relativenumber
 :set autoindent
-:set tabstop=4
-:set shiftwidth=4
+:set tabstop=4 shiftwidth=4 expandtab
 :set smarttab
 :set softtabstop=4
 :set mouse=a
@@ -23,6 +22,9 @@ Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/preservim/tagbar' 
 Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/daschw/leaf.nvim'
+Plug 'https://github.com/rebelot/kanagawa.nvim.git'
+Plug 'https://github.com/folke/tokyonight.nvim.git'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 set encoding=UTF-8
 
@@ -30,7 +32,7 @@ set clipboard=unnamedplus
 
 nmap <F8> :TagbarToggle<CR>
 
-source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/iceberg.vim
+source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/atom.vim
 
 :set completeopt-=preview
 
