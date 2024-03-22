@@ -1,5 +1,4 @@
 :set number
-:set relativenumber
 :set autoindent
 :set tabstop=4 shiftwidth=4 expandtab
 :set smarttab
@@ -31,8 +30,6 @@ set encoding=UTF-8
 set clipboard=unnamedplus
 
 nmap <F8> :TagbarToggle<CR>
-
-source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/atom.vim
 
 :set completeopt-=preview
 
