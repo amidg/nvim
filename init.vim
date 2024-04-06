@@ -20,10 +20,6 @@ Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/preservim/tagbar' 
 Plug 'https://github.com/neoclide/coc.nvim'
-Plug 'https://github.com/daschw/leaf.nvim'
-Plug 'https://github.com/rebelot/kanagawa.nvim.git'
-Plug 'https://github.com/folke/tokyonight.nvim.git'
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 set encoding=UTF-8
 
@@ -32,6 +28,7 @@ set clipboard=unnamedplus
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview
+source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/space-vim-dark.vim
 
 call plug#end()
 
