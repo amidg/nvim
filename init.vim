@@ -30,6 +30,8 @@ nmap <F8> :TagbarToggle<CR>
 :set completeopt-=preview
 source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/space-vim-dark.vim
 
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 nnoremap <C-n> :NERDTree<CR>
