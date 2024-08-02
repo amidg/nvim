@@ -6,6 +6,9 @@
 :set mouse=a
 :set termguicolors
 :syntax enable
+:set encoding=UTF-8
+:set clipboard=unnamedplus
+:set completeopt-=preview
 
 call plug#begin()
 
@@ -21,13 +24,8 @@ Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/preservim/tagbar' 
 Plug 'https://github.com/neoclide/coc.nvim'
 
-set encoding=UTF-8
-
-set clipboard=unnamedplus
-
 nmap <F8> :TagbarToggle<CR>
 
-:set completeopt-=preview
 source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/space-vim-dark.vim
 
 Plug 'lervag/vimtex'
