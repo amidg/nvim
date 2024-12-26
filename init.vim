@@ -24,11 +24,9 @@ Plug 'https://github.com/terryma/vim-multiple-cursors'
 Plug 'https://github.com/preservim/tagbar' 
 Plug 'https://github.com/neoclide/coc.nvim'
 
-nmap <F8> :TagbarToggle<CR>
+let NERDTreeShowHidden=1
 
-source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/space-vim-dark.vim
-
-Plug 'lervag/vimtex'
+source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/nord.vim
 
 call plug#end()
 
