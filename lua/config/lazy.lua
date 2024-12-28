@@ -1,5 +1,6 @@
 -- System configs
 vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.tagbar_ctags_bin = "/usr/bin/ctags"
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

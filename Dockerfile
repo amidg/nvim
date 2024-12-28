@@ -9,7 +9,9 @@ RUN dnf upgrade -y && \
     python3-pip \
     git \
     lua \
-    luarocks
+    luarocks \
+    ctags \
+    global-ctags
 
 # install language server prerequisites
 RUN npm install --global yarn && \
