@@ -16,8 +16,8 @@ return {
           "coc-json",
           "coc-lua",
           "coc-prettier",
-	      "coc-python",
-	      "coc-toml",
+          "coc-python",
+          "coc-toml",
           "coc-pyright",
           "coc-snippets",
           "coc-tsserver",
@@ -44,11 +44,23 @@ return {
       -- Mappings
       local mappings = {
           i = {
-              { "<TAB>", 'pumvisible() ? "<C-N>" : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', { expr = true } },
-              { "<S-TAB>", 'pumvisible() ? "<C-P>" : "<C-H>"', { expr = true } },
+              -- Use <TAB> for navigating in completion list, fallback to insert a tab if no completion is available
+              {
+                "<TAB>",
+                'pumvisible() ? "<C-N>" : v:lua.check_back_space() ? "<TAB>" : coc#refresh()',
+                { expr = true }
+              },
+              -- Shift-Tab to navigate backwards through the completion list
+              {
+                "<S-TAB>",
+                'pumvisible() ? "<C-P>" : "<C-H>"',
+                { expr = true }
+              },
           },
           n = {
+              -- Show docs for the word under the cursor in Normal mode
               { "K", "<CMD>lua _G.show_docs()<CR>", { silent = true } },
+              -- Go to definition
               { "gd", "<Plug>(coc-definition)", { noremap = false } },
           },
       }
@@ -69,4 +81,3 @@ return {
     end,
   },
 }
-
