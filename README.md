@@ -65,8 +65,7 @@ distrobox create --image ghcr.io/amidg/neovim:latest --name neovim --init-hooks 
 3. Execute the following to build:
 ```bash
 podman build -t neovim:latest .
-distrobox create --image localhost/neovim:latest --name neovim
-distrobox enter neovim
+distrobox create --image localhost/neovim:latest --name neovim --init-hooks "chmod 777 -R /app"
 ```
 
 ## Alias (DISTROBOX ONLY):
