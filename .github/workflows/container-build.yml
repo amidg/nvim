@@ -1,0 +1,56 @@
+name: Build and Push Container Image with Podman
+
+# Trigger the workflow on push to the main branch or on tags.
+on:
+  push:
+    branches:
+      - master
+      - github-workflows
+    tags:
+      - 'v*.*.*'  # Trigger on new version tags like v1.0.0
+  pull_request:
+    branches:
+      - master
+
+# variables
+env:
+  REGISTRY_USER: ${{ github.actor }}
+  REGISTRY_PASSWORD: ${{ github.token }}
+  REGISTRY_URL: ghcr.io/${{ github.repository_owner }}
+  BASE_IMAGE: fedora:latest
+
+# Define the job to build and push the container image
+jobs:
+  build:
+    # specifies virtual machine platform, not the container image
+    runs-on: ubuntu-latest
+    # steps
+    steps:
+      # Setup Podman to use container registry
+      - name: Login Podman
+        uses: redhat-actions/podman-login@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.PODMAN_TOKEN }}
+          registry: ${{ env.REGISTRY_URL }}
+
+      # Checkout the repository to get the files
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+
+      # Build the container image with Podman
+      - name: Build Podman image
+        run: |
+          # Build the container image
+          podman build -t ${{ env.REGISTRY_URL }}/neovim:latest .
+
+      - name: Publish current build
+        run: |
+          podman tag ${{ env.REGISTRY_URL }}/neovim:latest ${{ env.REGISTRY_URL }}/neovim:v${GITHUB_SHA}
+          podman push ${{ env.REGISTRY_URL }}/neovim:v${GITHUB_SHA}
+
+      - name: Publish stable build as latest
+        if: github.ref_name == 'master'
+        run: |
+          podman push ${{ env.REGISTRY_URL }}/neovim:latest
+

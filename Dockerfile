@@ -1,5 +1,8 @@
 FROM fedora:latest
 
+ENV APP_PATH=/app
+ENV NVIM_PATH=$APP_PATH/nvim
+
 # update dnf and install neovim and lua
 RUN dnf upgrade -y && \
     dnf install -y \
@@ -18,7 +21,7 @@ RUN npm install --global yarn && \
     pip3 install pynvim
 
 # copy local config to the container
-#RUN mkdir -p /nvim
-#COPY . /nvim/
-#
-#ENTRYPOINT ["nvim", "-u", "/nvim/init.lua"]
+RUN mkdir -p $NVIM_PATH
+RUN ls -la /app/nvim
+COPY init.lua $NVIM_PATH/init.lua
+COPY lua $NVIM_PATH/lua
