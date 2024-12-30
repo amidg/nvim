@@ -14,7 +14,9 @@ RUN dnf upgrade -y && \
     lua \
     luarocks \
     ctags \
-    global-ctags
+    global-ctags \
+    clang \
+    clang-tools-extra
 
 # install language server prerequisites
 RUN npm install --global yarn && \
