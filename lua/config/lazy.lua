@@ -1,5 +1,11 @@
 -- System configs
-vim.g.python3_host_prog = '/usr/bin/python3'
+if vim.loop.os_uname().sysname == "Darwin" then
+    -- macOS specific Python path
+    vim.g.python3_host_prog = '/usr/local/bin/python3'
+elseif vim.loop.os_uname().sysname == "Linux" then
+    -- Linux specific Python path
+    vim.g.python3_host_prog = '/usr/bin/python3'
+end
 vim.g.tagbar_ctags_bin = "/usr/bin/ctags"
 
 -- Bootstrap lazy.nvim
