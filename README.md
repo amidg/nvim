@@ -46,8 +46,24 @@ sudo dnf install -y neovim \
 sudo npm install --global yarn
 pip3 install --user --upgrade pynvim
 ```
-Other Linux distributions and macOS users, please, adjust your command accordingly...
 
+macOS:
+- After installing dependencies, set Nerd Font as your default in terminal application (e.g. iTerm2 it is Profiles -> Text -> Font)
+- macOS config uses system-wide python located at `/usr/local/bin/python3`, not the `.pyenv` or `conda`. Please adjust accordingly
+```zsh
+brew install \
+    ctags \
+    universal-ctags \
+    node \
+    git \
+    lua \
+    luarocks \
+    neovim \
+    font-hack-nerd-font
+
+sudo npm install --global yarn
+/usr/local/bin/python3 -m pip install --user --upgrade pynvim
+```
 2. Clone repo to `~/.config/nvim`
 3. Install neovim via your package manager
 4. Run `nvim`
