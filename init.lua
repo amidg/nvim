@@ -1,5 +1,6 @@
 -- Lazy Nvim Configuration
 require("config.lazy")
+require("config.shortcuts")
 
 -- Define the toggle_colorscheme function
 function toggle_colorscheme()

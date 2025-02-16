@@ -7,10 +7,5 @@ return {
         -- You can configure Tagbar here. For example:
         vim.g.tagbar_autoclose = 1     -- Automatically close Tagbar when leaving the buffer
         vim.g.tagbar_ctags_bin = "ctags"  -- Define the ctags binary if necessary
-
-        -- Add key mappings for opening and closing Tagbar
-        -- vim.api.nvim_set_keymap("n", "<leader>n", ":TagbarOpen<CR>", { noremap = true, silent = true })
-        vim.api.nvim_set_keymap("n", "<leader>tb", ":TagbarToggle<CR>", { noremap = true, silent = true })
-        vim.api.nvim_set_keymap("n", "<leader>tr", ":TagbarRefresh<CR>", { noremap = true, silent = true })
     end,
 }

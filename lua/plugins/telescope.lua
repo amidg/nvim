@@ -49,26 +49,5 @@ return {
     pcall(function()
       require("telescope").load_extension("fzf")
     end)
-
-    -- Key mappings for Telescope
-    local keymap = vim.api.nvim_set_keymap
-    local opts = { noremap = true, silent = true }
-
-    -- Find files
-    keymap('n', '<leader>ff', "<cmd>Telescope find_files<CR>", opts)
-    -- Live grep
-    keymap('n', '<leader>fg', "<cmd>Telescope live_grep<CR>", opts)
-    -- Open buffers
-    keymap('n', '<leader>fb', "<cmd>Telescope buffers<CR>", opts)
-    -- Help tags
-    keymap('n', '<leader>fh', "<cmd>Telescope help_tags<CR>", opts)
-    -- Treesitter symbols
-    keymap('n', '<leader>ft', "<cmd>Telescope treesitter<CR>", opts)
-    -- LSP diagnostics
-    keymap('n', '<leader>fd', "<cmd>Telescope diagnostics<CR>", opts)
-    -- Find commits
-    keymap('n', '<leader>fc', "<cmd>Telescope git_commits<CR>", opts)
-    -- Git branches
-    keymap('n', '<leader>gb', "<cmd>Telescope git_branches<CR>", opts)
   end,
 }
