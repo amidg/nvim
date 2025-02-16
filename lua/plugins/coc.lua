@@ -18,7 +18,7 @@ return {
           "coc-prettier",
           "coc-python",
           "coc-toml",
-          "coc-pyright",
+          --"coc-pyright",
           "coc-snippets",
           "coc-tsserver",
           "coc-yaml",

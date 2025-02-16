@@ -24,12 +24,6 @@ return {
                     },
                 },
             })
-            
-            -- Map shortcut to open or toggle NvimTree
-            vim.api.nvim_set_keymap("n", "<leader>ne", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-
-            -- Key mapping to focus on NvimTree window
-            vim.api.nvim_set_keymap('n', '<leader>nf', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
         end,
     }
 }
