@@ -31,8 +31,10 @@ config.
 
 | Key | Action |
 |---|---|
-| `<C-h>` `<C-j>` `<C-k>` `<C-l>` | Move to split / tmux pane in that direction |
-| `<M-h>` `<M-j>` `<M-k>` `<M-l>` | Resize split / tmux pane |
+| `<leader>wh` `<leader>wj` `<leader>wk` `<leader>wl` | Move to split / tmux pane (no Ctrl needed) |
+| `<leader>wH` `<leader>wJ` `<leader>wK` `<leader>wL` | Resize split / tmux pane (no Alt needed) |
+| `<C-h>` `<C-j>` `<C-k>` `<C-l>` | Move to split / tmux pane (Ctrl version) |
+| `<M-h>` `<M-j>` `<M-k>` `<M-l>` | Resize split / tmux pane (Alt version) |
 | `<leader>-` / `<leader>\|` | Split below / right |
 | `<leader>wd` | Close window |
 | `<S-h>` / `<S-l>` | Previous / next buffer |
