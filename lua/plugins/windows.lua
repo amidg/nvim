@@ -12,6 +12,16 @@ return {
       { "<A-j>", function() require("smart-splits").resize_down() end, desc = "Resize split down" },
       { "<A-k>", function() require("smart-splits").resize_up() end, desc = "Resize split up" },
       { "<A-l>", function() require("smart-splits").resize_right() end, desc = "Resize split right" },
+
+      -- leader-only equivalents (no Ctrl/Alt needed)
+      { "<leader>wh", function() require("smart-splits").move_cursor_left() end, desc = "Go to left split/pane" },
+      { "<leader>wj", function() require("smart-splits").move_cursor_down() end, desc = "Go to lower split/pane" },
+      { "<leader>wk", function() require("smart-splits").move_cursor_up() end, desc = "Go to upper split/pane" },
+      { "<leader>wl", function() require("smart-splits").move_cursor_right() end, desc = "Go to right split/pane" },
+      { "<leader>wH", function() require("smart-splits").resize_left() end, desc = "Resize split left" },
+      { "<leader>wJ", function() require("smart-splits").resize_down() end, desc = "Resize split down" },
+      { "<leader>wK", function() require("smart-splits").resize_up() end, desc = "Resize split up" },
+      { "<leader>wL", function() require("smart-splits").resize_right() end, desc = "Resize split right" },
     },
   },
   {

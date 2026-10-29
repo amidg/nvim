@@ -66,7 +66,7 @@ config.
 
 ### Full map
 
-#### Leader: direct keys
+### Leader: direct keys
 
 | Key | Action |
 |---|---|
@@ -262,6 +262,14 @@ config.
 | Key | Action |
 |---|---|
 | `<leader>wd` | Delete Window |
+| `<leader>wh` | Go to left split/pane |
+| `<leader>wH` | Resize split left |
+| `<leader>wj` | Go to lower split/pane |
+| `<leader>wJ` | Resize split down |
+| `<leader>wk` | Go to upper split/pane |
+| `<leader>wK` | Resize split up |
+| `<leader>wl` | Go to right split/pane |
+| `<leader>wL` | Resize split right |
 | `<leader>wm` | Toggle Zoom Mode |
 
 #### Diagnostics / quickfix
