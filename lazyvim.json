@@ -1,7 +1,5 @@
 {
-  "extras": [
-
-  ],
+  "extras": ["lazyvim.plugins.extras.editor.fzf"],
   "install_version": 8,
   "news": {
     "NEWS.md": "11866"

@@ -105,8 +105,8 @@ Three searches, each with a default, fast path:
 
 Preferred approach: fzf-lua as the single picker for repo jumps; native for
 buffer search; flash for movement. Note: LazyVim 16 ships no picker by default
-— pickers moved to opt-in extras, so the fzf extra must be imported from
-`lua/config/lazy.lua` (imports from `lua/plugins/*` are ignored for extras).
+— pickers moved to opt-in extras, enabled via the `extras` list in
+`lazyvim.json` (what `:LazyExtras` writes); the fzf extra is enabled there.
 
 ## Dependency installation (Bluefin / immutable Fedora)
 
