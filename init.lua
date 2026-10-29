@@ -16,3 +16,6 @@ end
 
 -- Set a keybinding to toggle colorscheme
 vim.api.nvim_set_keymap('n', '<leader>tc', ':lua toggle_colorscheme()<CR>', { noremap = true, silent = true })
+
+--- configs
+vim.g.python3_host_prog = vim.fn.expand('~/.miniconda3/bin/python3')
