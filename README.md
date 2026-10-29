@@ -413,46 +413,86 @@ config.
 | `s` | Flash |
 | `S` | Flash Treesitter |
 
-## Installation (Bluefin, immutable Fedora)
+## Host setup (Bluefin / immutable Fedora)
 
-Bluefin already ships Homebrew, Neovim 0.12, git, curl/tar/gzip/unzip, tmux,
-gcc, ripgrep, fzf, Nerd Fonts and `opencode`. Install the three missing tools:
+Nothing is layered into the OS image — `rpm-ostree` is never used. Bluefin
+already ships Homebrew, Neovim, tmux, gcc, ripgrep, fzf, Nerd Fonts and
+`opencode`; everything else comes from Homebrew or nvim's own data dir.
+
+### 1. Verify what the image provides
+
+```bash
+for t in nvim git curl tar gzip unzip tmux gcc make rg fzf wl-copy brew opencode; do
+  printf "%-10s " "$t"; command -v "$t" >/dev/null && echo OK || echo MISSING
+done
+nvim --version | head -1     # need >= 0.11.2 (Bluefin ships 0.12)
+git --version                # need >= 2.19
+tmux -V                      # need >= 3.0
+```
+Only `fd`, `lazygit` and the tree-sitter CLI should report missing.
+
+### 2. Install the missing CLI tools
 
 ```bash
 brew install fd lazygit tree-sitter-cli
 ```
+> `tree-sitter-cli` is the CLI (required by nvim-treesitter's main branch);
+> the `tree-sitter` formula is only the library.
 
-> `tree-sitter-cli` is the CLI; the `tree-sitter` formula is only the library.
+If `brew` isn't on your PATH, add it once to `~/.bashrc`:
 
-Then:
-
-1. Back up any existing config: `mv ~/.config/nvim{,.bak}`
-2. Clone this repo to `~/.config/nvim`
-3. Run `nvim` — plugins, LSP servers and parsers install into
-   `~/.local/share/nvim` automatically
-
-## tmux
-
-Seamless navigation needs a block in `~/.tmux.conf` that forwards `C-h/j/k/l`
-into nvim and selects panes otherwise. This is already configured in this
-environment; the exact block lives in `~/.tmux.conf`:
-
-```tmux
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-bind-key -n C-h if-shell "$is_vim" 'send-keys C-h' 'select-pane -L'
-bind-key -n C-j if-shell "$is_vim" 'send-keys C-j' 'select-pane -D'
-bind-key -n C-k if-shell "$is_vim" 'send-keys C-k' 'select-pane -U'
-bind-key -n C-l if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
+```bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ```
 
-Mouse is enabled too: drag borders to resize, wheel to scroll (50k-line history),
-drag/double-click/triple-click to copy — copies go to the system clipboard via
-`wl-copy` (and OSC52).
+`opencode` (AI agent) is already installed on Bluefin; otherwise `brew install opencode`.
+
+### 3. tmux
+
+The repo ships its `tmux.conf` (smart-splits navigation, mouse + clipboard,
+50k scrollback, prefix-based pane keys):
+
+```bash
+cp ~/.config/nvim/tmux.conf ~/.tmux.conf
+tmux source-file ~/.tmux.conf    # or just start tmux
+```
+
+### 4. Nerd Font
+
+Bluefin layers Nerd Fonts already. Select one (e.g. *JetBrainsMono Nerd Font*)
+in your terminal's preferences so icons render.
+
+### 5. Install this config
+
+```bash
+mv ~/.config/nvim ~/.config/nvim.bak    # if a config already exists
+git clone git@github.com:amidg/nvim.git ~/.config/nvim
+nvim
+```
+
+First launch installs plugins, LSP servers, formatters and treesitter parsers
+into `~/.local/share/nvim` (needs network; a few minutes). The first file of a
+new language may install its server on demand.
+
+### 6. Verify
+
+```vim
+:LazyHealth        " plugins loaded, versions ok
+:checkhealth       " treesitter/LSP/tools
+:Mason             " installed servers and formatters
+```
+
+Smoke test: `<leader><leader>` finds a file, `<leader>tv` opens a right-hand
+terminal where `opencode` runs, and opening a `.py` / `.ts` / `.c` file
+attaches an LSP (`:checkhealth lsp`).
 
 ## Layout
 
 ```
 init.lua
+lazyvim.json         -- enabled LazyVim extras (picker, languages, prettier)
+lazy-lock.json       -- pinned plugin versions
+tmux.conf            -- tmux setup: navigation, mouse/clipboard, scrollback
 lua/config/          -- options, keymaps, autocmds, lazy bootstrap
 lua/plugins/         -- one file per concern
   colorscheme.lua    -- catppuccin + light/dark toggle
@@ -460,6 +500,7 @@ lua/plugins/         -- one file per concern
   terminal.lua       -- snacks terminals
   editor.lua         -- fzf-lua extra, blink.cmp pin
   ai.lua             -- opencode.nvim
+  formatters.lua     -- ruff (python), clang-format (c/cpp)
 ```
 
 `SPEC.md` documents the intent behind each area.
