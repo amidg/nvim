@@ -71,7 +71,7 @@ config.
 
 ### Full map
 
-### Leader: direct keys
+#### Leader: direct keys
 
 | Key | Action |
 |---|---|
