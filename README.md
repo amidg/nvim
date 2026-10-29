@@ -17,8 +17,8 @@ into the OS image — tools come from Homebrew, plugins and LSP servers from
 - **LSP & completion** — LazyVim defaults: nvim-lspconfig, mason, treesitter,
   [blink.cmp](https://github.com/Saghen/blink.cmp) (pinned to v1). Languages
   wired up: Lua, Python (pyright + ruff), TypeScript/JavaScript (vtsls,
-  prettier), JSON, YAML, TOML, Markdown. Missing one? `:LazyExtras` →
-  `lang.*`, then `:Mason` to install the server.
+  prettier), C/C++ (clangd + clang-format), JSON, YAML, TOML, Markdown.
+  Missing one? `:LazyExtras` → `lang.*`, then `:Mason` to install the server.
 - **Search** — [fzf-lua](https://github.com/ibhagwan/fzf-lua) with ripgrep/fd
 - **AI** — [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim)
   talking to the local `opencode` daemon
