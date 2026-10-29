@@ -432,6 +432,10 @@ bind-key -n C-k if-shell "$is_vim" 'send-keys C-k' 'select-pane -U'
 bind-key -n C-l if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
 ```
 
+Mouse is enabled too: drag borders to resize, wheel to scroll (50k-line history),
+drag/double-click/triple-click to copy — copies go to the system clipboard via
+`wl-copy` (and OSC52).
+
 ## Layout
 
 ```
